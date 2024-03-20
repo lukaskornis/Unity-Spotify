@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Analyzer : MonoBehaviour
 {
 	public GameObject cube;
 	public AudioSource source;
+	public UnityEvent<float> onVolumeChanged;
 
 	void Start()
 	{
@@ -21,8 +23,7 @@ public class Analyzer : MonoBehaviour
 			sum += Mathf.Abs(samples[i]);
 		}
 		var average = sum / samples.Length;
-
-
-		cube.transform.localScale = Vector3.one * ( 0.5f +  average * 10);
+		print(average);
+		onVolumeChanged.Invoke(average);
 	}
 }

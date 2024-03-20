@@ -5,19 +5,11 @@ public class Synth : MonoBehaviour
     public float frequency = 440f;
     AudioSource audioSource;
 
-    void callback(float[] samples)
-    {
-        for(int i = 0; i < samples.Length; i++)
-        {
-            samples[i] = Mathf.Sin(i / 41000f * 2 * Mathf.PI * 440 * Time.time);
-        }
-    }
-
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
 
-        AudioClip clip = AudioClip.Create("Sin", 41000 * 3, 1, 41000, true,callback);
+        AudioClip clip = AudioClip.Create("Sin", 41000 * 3, 1, 41000, false);
         float[] samples = new float[41000 * 3];
 
         for(int i = 0; i < samples.Length; i++)
