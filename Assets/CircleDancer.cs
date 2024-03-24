@@ -28,6 +28,6 @@ public class CircleDancer : MonoBehaviour
     public void Dance(float volume)
     {
         transform.Rotate(0,0,Mathf.Pow(volume,sensitivity) * Time.deltaTime * rotateSpeed);
-        transform.localScale = Vector3.one * 5f * volume;
+        transform.localScale = Vector3.one * (5f * volume + 0.5f);
     }
 }
