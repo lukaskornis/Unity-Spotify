@@ -7,6 +7,11 @@ public class Dancer : MonoBehaviour
     public float sensitivity = 1;
     public float maxSize = 10;
 
+    void Start()
+    {
+	    Analyzer.onVolumeChanged.AddListener(Dance);
+    }
+
     public void Dance(float volume)
     {
 	    volume -= 0.15f;
