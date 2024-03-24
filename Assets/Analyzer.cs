@@ -5,11 +5,10 @@ public class Analyzer : MonoBehaviour
 {
 	public GameObject cube;
 	public AudioSource source;
-	public UnityEvent<float> onVolumeChanged;
+	public static UnityEvent<float> onVolumeChanged = new();
 
 	void Start()
 	{
-		source.time = 30;
 	}
 
 	void Update()

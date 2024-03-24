@@ -6,7 +6,7 @@ public class Dancer : MonoBehaviour
 
     void Start()
     {
-	    GetComponent<Analyzer>().onVolumeChanged.AddListener(Dance);
+	    Analyzer.onVolumeChanged.AddListener(Dance);
     }
 
 
