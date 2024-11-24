@@ -5,22 +5,26 @@ using UnityEngine.Events;
 public class MusicPlayer : MonoBehaviour
 {
     AudioSource audioSource;
-    public TMP_Text musicNameText;
-    public TMP_Text musicTimeText;
+    public TMP_Text nameText;
+    public TMP_Text lengthText;
     public UnityEvent<float> onBeat;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        musicNameText.text = audioSource.clip.name;
-        musicTimeText.text = audioSource.clip.length.ToString();
+        nameText.text = audioSource.clip.name;
+
+        // format float to minutes:seconds
+        int minutes = (int)audioSource.clip.length / 60;
+        int seconds = (int)audioSource.clip.length % 60;
+        lengthText.text = minutes + ":" + string.Format( "{0:00}", seconds );
     }
 
     void Update()
     {
-        float[] data = new float[1024];
-        audioSource.clip.GetData(data, audioSource.timeSamples); // sample rate 44100hz
-        onBeat.Invoke(data[1000]);
+        float[] samples = new float[100];
+        audioSource.clip.GetData(samples, audioSource.timeSamples);
+        onBeat.Invoke(samples[0]);
     }
 
     public void Pause()
