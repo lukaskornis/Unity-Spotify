@@ -1,12 +1,26 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MusicPlayer : MonoBehaviour
 {
     AudioSource audioSource;
+    public TMP_Text musicNameText;
+    public TMP_Text musicTimeText;
+    public UnityEvent<float> onBeat;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        musicNameText.text = audioSource.clip.name;
+        musicTimeText.text = audioSource.clip.length.ToString();
+    }
+
+    void Update()
+    {
+        float[] data = new float[1024];
+        audioSource.clip.GetData(data, audioSource.timeSamples); // sample rate 44100hz
+        onBeat.Invoke(data[1000]);
     }
 
     public void Pause()
