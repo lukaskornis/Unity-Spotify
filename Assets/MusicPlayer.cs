@@ -7,7 +7,7 @@ public class MusicPlayer : MonoBehaviour
     AudioSource audioSource;
     public TMP_Text musicNameText;
     public TMP_Text musicTimeText;
-    public UnityEvent<float> onBeat;
+    public static UnityEvent<float> onBeat = new();
 
     void Start()
     {
