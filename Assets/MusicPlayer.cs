@@ -21,7 +21,13 @@ public class MusicPlayer : MonoBehaviour
     {
         float[] data = new float[512];
         source.clip.GetData(data, source.timeSamples);
-        onBeat.Invoke(data[0]);
+
+        float sum = 0;
+        foreach (float sample in data)
+        {
+            sum += Mathf.Abs(sample);
+        }
+        onBeat.Invoke(sum / data.Length );
     }
 
     public void Pause()
