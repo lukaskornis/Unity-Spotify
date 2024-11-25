@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JumpDancer : MonoBehaviour
+public class DanceRotator : MonoBehaviour
 {
     public float sensitivity = 10f;
 
@@ -11,6 +11,7 @@ public class JumpDancer : MonoBehaviour
 
     public void Dance(float volume)
     {
-        transform.position = Vector3.up * volume * sensitivity;
+        transform.Rotate(0,0,volume * sensitivity);
     }
+
 }

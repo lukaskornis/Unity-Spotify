@@ -8,7 +8,7 @@ public class MusicPlayer : MonoBehaviour
     public TMP_Text musicNameText;
     public TMP_Text musicLengthText;
     public Transform dancer;
-    public UnityEvent<float> onBeat;
+    public static UnityEvent<float> onBeat = new();
 
     void Start()
     {
