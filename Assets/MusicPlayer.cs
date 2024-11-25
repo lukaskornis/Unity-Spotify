@@ -20,7 +20,14 @@ public class MusicPlayer : MonoBehaviour
     {
         float[] data = new float[1024];
         audioSource.clip.GetData(data, audioSource.timeSamples); // sample rate 44100hz
-        onBeat.Invoke(data[1000]);
+        float sum = 0;
+        foreach (var sample in data)
+        {
+            sum += Mathf.Abs( sample);
+        }
+
+        float avg = sum/data.Length;
+        onBeat.Invoke(avg);
     }
 
     public void Pause()
