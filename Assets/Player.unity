@@ -799,8 +799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee5c54da7b7f4e4ebdb2ce83030d672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicNameText: {fileID: 1773124015}
-  musicTimeText: {fileID: 919840971}
+  nameText: {fileID: 0}
+  lengthText: {fileID: 0}
   onBeat:
     m_PersistentCalls:
       m_Calls:
@@ -1393,7 +1393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1160234426
 MonoBehaviour:
   m_ObjectHideFlags: 0

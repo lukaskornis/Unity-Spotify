@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,9 +23,17 @@ public class MusicPlayer : MonoBehaviour
 
     void Update()
     {
-        float[] samples = new float[100];
+        float[] samples = new float[512];
         audioSource.clip.GetData(samples, audioSource.timeSamples);
-        onBeat.Invoke(samples[0]);
+
+        float sum = 0f;
+        foreach (var sample in samples)
+        {
+            sum += Mathf.Abs(sample);
+        }
+        float average = sum/samples.Length;
+
+        onBeat.Invoke(average);
     }
 
     public void Pause()
